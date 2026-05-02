@@ -77,8 +77,10 @@ if NODELOC_PROXY:
 
 # ── 任务配置（可通过环境变量覆盖）───────────────────────────────────
 DAILY_TASKS = {
-    "topics_to_browse": int(os.environ.get("NL_TOPICS",  "15")),
-    "likes_to_give":    int(os.environ.get("NL_LIKES",   "7")),
+    # 如果没有设置环境变量，则生成 5-15 之间的随机整数
+    "topics_to_browse": int(os.environ.get("NL_TOPICS", random.randint(5, 15))),
+    # 如果没有设置环境变量，则生成 3-7 之间的随机整数
+    "likes_to_give":    int(os.environ.get("NL_LIKES",  random.randint(3, 7))),
     "replies_to_post":  int(os.environ.get("NL_REPLIES", "0")),
 }
 
